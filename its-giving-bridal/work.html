@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — It's Giving Bridal</title>
+  <meta name="description" content="Bridal fashion styling for destination and multi-day wedding celebrations. View the portfolio of It's Giving Bridal.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 180px 56px 80px;
+      border-bottom: 1px solid rgba(240,238,233,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .page-header-left .section-label { margin-bottom: 20px; }
+
+    .page-header-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.0;
+      color: var(--cloud);
+    }
+
+    .page-header-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--champagne);
+    }
+
+    /* FILTER */
+    .filter {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .filter-item {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      opacity: 0.5;
+      cursor: pointer;
+      transition: opacity 0.3s;
+      padding-bottom: 4px;
+    }
+
+    .filter-item:hover,
+    .filter-item.active {
+      opacity: 1;
+      border-bottom: 1px solid var(--champagne);
+    }
+
+    /* WORK GRID */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      padding: 3px;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+    }
+
+    .work-item.wide {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+
+    .work-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) grayscale(10%);
+      transition: transform 0.8s ease, filter 0.5s ease;
+    }
+
+    .work-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.9) grayscale(0%);
+    }
+
+    .work-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14,14,14,0.9) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .work-item:hover .work-item-overlay { opacity: 1; }
+
+    .work-item-info {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: opacity 0.4s, transform 0.4s;
+    }
+
+    .work-item:hover .work-item-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .work-item-title {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cloud);
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .work-item-meta {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .page-header {
+        flex-direction: column;
+        gap: 32px;
+        padding: 140px 28px 52px;
+        align-items: flex-start;
+      }
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .work-item.wide { grid-column: span 2; }
+    }
+
+    @media (max-width: 600px) {
+      .work-grid { grid-template-columns: 1fr; }
+      .work-item.wide { grid-column: span 1; aspect-ratio: 3/4; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">It's Giving <em>Bridal</em></a>
+    <ul class="nav-links">
+      <li><a href="work.html" class="active">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="inquire.html">Inquire</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-left">
+      <span class="section-label">Portfolio</span>
+      <h1 class="page-header-title">THE<br><em>Work</em></h1>
+    </div>
+    <ul class="filter">
+      <li class="filter-item active" onclick="filterWork('all', this)">All</li>
+      <li class="filter-item" onclick="filterWork('wedding', this)">Weddings</li>
+      <li class="filter-item" onclick="filterWork('editorial', this)">Editorial</li>
+    </ul>
+  </header>
+
+  <!-- WORK GRID -->
+  <section class="work-grid" id="work-grid">
+
+    <div class="work-item wide" data-category="wedding">
+      <!-- REPLACE: swap with your best image -->
+      <div class="img-placeholder" style="height:100%;min-height:380px;"><span>Feature — Sonoma Wedding</span></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Chic Summer Wedding</div>
+        <div class="work-item-meta">Sonoma, California &nbsp;·&nbsp; Wedding</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="wedding">
+      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>Louisiana Wedding</span></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Elevated Southern Wedding</div>
+        <div class="work-item-meta">Louisiana &nbsp;·&nbsp; Wedding</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="editorial">
+      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>LOHO Editorial</span></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Unbound by Convention</div>
+        <div class="work-item-meta">Editorial &nbsp;·&nbsp; LOHO</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="wedding">
+      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>Sea Ranch Lodge</span></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Sea Ranch Lodge Wedding</div>
+        <div class="work-item-meta">California Coast &nbsp;·&nbsp; Wedding</div>
+      </div>
+    </div>
+
+    <div class="work-item wide" data-category="wedding">
+      <div class="img-placeholder" style="height:100%;min-height:380px;"><span>Hawaii Wedding</span></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Joyful Simplicity</div>
+        <div class="work-item-meta">Hawaii &nbsp;·&nbsp; Wedding</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="wedding">
+      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>Spring Wedding</span></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Whimsical Spring Wedding</div>
+        <div class="work-item-meta">K + S &nbsp;·&nbsp; Wedding</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="wedding">
+      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>Miami Wedding</span></div>
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">H + O Wedding</div>
+        <div class="work-item-meta">Miami, Florida &nbsp;·&nbsp; Wedding</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">It's Giving Bridal</span>
+    <ul class="footer-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="inquire.html">Inquire</a></li>
+    </ul>
+    <span class="footer-copy">© It's Giving Bridal 2026</span>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function filterWork(category, el) {
+      document.querySelectorAll('.filter-item').forEach(i => i.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('.work-item').forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

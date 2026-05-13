@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquire — It's Giving Bridal</title>
+  <meta name="description" content="Work with Sam Ruiz — bridal fashion stylist for destination and multi-day wedding celebrations.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    .inquire-wrap {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* LEFT IMAGE */
+    .inquire-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    .inquire-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7) grayscale(10%);
+    }
+
+    /* RIGHT FORM */
+    .inquire-form-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 72px 80px;
+      background: var(--black);
+    }
+
+    .inquire-form-wrap .section-label {
+      margin-bottom: 24px;
+    }
+
+    .inquire-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.0;
+      color: var(--cloud);
+      margin-bottom: 16px;
+    }
+
+    .inquire-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--champagne);
+      display: block;
+    }
+
+    .inquire-sub {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      line-height: 1.9;
+      color: var(--champagne);
+      opacity: 0.75;
+      margin-bottom: 52px;
+    }
+
+    /* FORM */
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-field label {
+      font-family: var(--sans);
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      opacity: 0.6;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(208,200,180,0.2);
+      color: var(--cloud);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      padding: 10px 0;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: var(--champagne);
+      opacity: 0.3;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--champagne);
+    }
+
+    .form-field select option {
+      background: var(--charcoal);
+      color: var(--cloud);
+    }
+
+    .form-field textarea {
+      resize: none;
+      height: 100px;
+      line-height: 1.8;
+    }
+
+    .form-field.full { grid-column: span 2; }
+
+    .form-submit {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-submit {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--cloud);
+      border: none;
+      padding: 16px 40px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: var(--champagne);
+    }
+
+    .form-note {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--champagne);
+      opacity: 0.4;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .inquire-wrap { grid-template-columns: 1fr; }
+      .inquire-image { min-height: 50vh; }
+      .inquire-form-wrap { padding: 72px 28px 60px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">It's Giving <em>Bridal</em></a>
+    <ul class="nav-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="inquire.html" class="active">Inquire</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="inquire-wrap">
+
+    <!-- LEFT IMAGE -->
+    <div class="inquire-image">
+      <!-- REPLACE: swap with an editorial or bridal image -->
+      <div class="img-placeholder" style="min-height:100vh;"><span>Inquire Image</span></div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="inquire-form-wrap">
+      <span class="section-label">Get In Touch</span>
+      <h1 class="inquire-title">
+        LET'S BUILD<br>
+        <em>Your Story</em>
+      </h1>
+      <p class="inquire-sub">Sam will be in touch within 48 hours.</p>
+
+      <form class="form" action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+        <!-- REPLACE: sign up at formspree.io and replace YOUR-FORM-ID with your form ID -->
+
+        <div class="form-row">
+          <div class="form-field">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="Jane" required>
+          </div>
+          <div class="form-field">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Smith" required>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="jane@email.com" required>
+        </div>
+
+        <div class="form-field">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="+1 000 000 0000">
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label>Wedding Date</label>
+            <input type="text" name="wedding_date" placeholder="Month, Year">
+          </div>
+          <div class="form-field">
+            <label>Wedding Location</label>
+            <input type="text" name="wedding_location" placeholder="City, Country">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Service</label>
+          <select name="service">
+            <option value="" disabled selected>Select a service</option>
+            <option value="bridal">Full Service Bridal Styling</option>
+            <option value="editorial">Editorial & Campaign Styling</option>
+            <option value="unsure">Not Sure Yet</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>Estimated Fashion Budget</label>
+          <input type="text" name="budget" placeholder="e.g. $10,000 — $25,000">
+        </div>
+
+        <div class="form-field">
+          <label>Tell Sam About Your Vision</label>
+          <textarea name="message" placeholder="Share as much or as little as you'd like."></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Submit Inquiry</button>
+          <span class="form-note">Response within 48 hours.</span>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">It's Giving Bridal</span>
+    <ul class="footer-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="inquire.html">Inquire</a></li>
+    </ul>
+    <span class="footer-copy">© It's Giving Bridal 2026</span>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+
+</body>
+</html>

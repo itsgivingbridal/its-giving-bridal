@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>It's Giving Bridal — Bridal Fashion Stylist</title>
+  <meta name="description" content="Sam Ruiz is a bridal fashion stylist specializing in fashion direction for destination and multi-day wedding celebrations. West Coast based. Available worldwide.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75);
+      animation: slowzoom 14s ease-out forwards;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px 64px 88px;
+      background: var(--black);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeup 1s ease forwards 0.3s;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.0;
+      color: var(--cloud);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeup 1s ease forwards 0.6s;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      display: block;
+      color: var(--champagne);
+    }
+
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      line-height: 2;
+      color: var(--champagne);
+      max-width: 300px;
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeup 1s ease forwards 0.9s;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      animation: fadeup 1s ease forwards 1.1s;
+    }
+
+    /* PRESS */
+    .press {
+      padding: 52px 56px;
+      border-top: 1px solid rgba(240,238,233,0.06);
+      border-bottom: 1px solid rgba(240,238,233,0.06);
+    }
+
+    .press-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .press-name {
+      font-family: var(--serif);
+      font-size: clamp(10px, 1.2vw, 13px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .press-name:hover { opacity: 0.9; }
+
+    .press-name.serif-italic {
+      font-style: italic;
+      letter-spacing: 0.06em;
+      font-size: clamp(12px, 1.4vw, 16px);
+    }
+
+    /* WORK */
+    .work {
+      padding: 100px 56px;
+    }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 40px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      grid-template-rows: 340px 280px;
+      gap: 3px;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .work-item:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .work-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) grayscale(10%);
+      transition: transform 0.8s ease, filter 0.5s ease;
+    }
+
+    .work-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.9) grayscale(0%);
+    }
+
+    .work-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14,14,14,0.85) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .work-item:hover .work-item-overlay { opacity: 1; }
+
+    .work-item-info {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: opacity 0.4s, transform 0.4s;
+    }
+
+    .work-item:hover .work-item-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .work-item-title {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cloud);
+      letter-spacing: 0.04em;
+    }
+
+    .work-item-loc {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-top: 5px;
+    }
+
+    /* ABOUT STRIP */
+    .about-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 72vh;
+    }
+
+    .about-image {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75) grayscale(15%);
+      transition: transform 0.8s ease;
+    }
+
+    .about-strip:hover .about-image img {
+      transform: scale(1.03);
+    }
+
+    .about-content {
+      background: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 88px 72px;
+    }
+
+    .about-content .section-label {
+      margin-bottom: 28px;
+    }
+
+    .about-title {
+      font-family: var(--serif);
+      font-size: clamp(26px, 2.8vw, 40px);
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      line-height: 1.25;
+      color: var(--cloud);
+      margin-bottom: 28px;
+    }
+
+    .about-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--champagne);
+      display: block;
+    }
+
+    .about-body {
+      font-family: var(--sans);
+      font-size: 11px;
+      line-height: 2;
+      color: var(--champagne);
+      max-width: 380px;
+      margin-bottom: 48px;
+      opacity: 0.85;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { min-height: 55vh; }
+      .hero-copy { padding: 40px 32px 64px; }
+      .work-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .work-item:first-child { grid-row: auto; }
+      .about-strip { grid-template-columns: 1fr; }
+      .about-image { min-height: 50vh; }
+      .about-content { padding: 60px 36px; }
+      .work { padding: 72px 28px; }
+      .press { padding: 40px 28px; }
+      .press-inner { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">It's Giving <em>Bridal</em></a>
+    <ul class="nav-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="inquire.html">Inquire</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-image">
+      <!-- REPLACE: swap src with your hero image path e.g. images/hero.jpg -->
+      <div class="img-placeholder" style="min-height:100vh;"><span>Hero Image</span></div>
+    </div>
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Bridal Fashion Stylist</p>
+      <h1 class="hero-title">
+        BRIDAL<br>
+        FASHION<br>
+        <em>STYLIST</em>
+      </h1>
+      <p class="hero-sub">Fashion direction for multi-day wedding celebrations.</p>
+      <a href="inquire.html" class="text-link hero-cta">Work With Me</a>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="press">
+    <div class="press-inner">
+      <span class="press-name">Rock N Roll Bride</span>
+      <span class="press-name">Brides</span>
+      <span class="press-name">Coveteur</span>
+      <span class="press-name">Style Me Pretty</span>
+      <span class="press-name">The Wed</span>
+      <span class="press-name">Over The Moon</span>
+      <span class="press-name serif-italic">The New York Times</span>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work">
+    <div class="work-header">
+      <span class="section-label">Recent Work</span>
+      <a href="work.html" class="text-link">View All</a>
+    </div>
+    <div class="work-grid">
+      <div class="work-item">
+        <!-- REPLACE: swap with your image -->
+        <div class="img-placeholder"><span>Feature Image</span></div>
+        <div class="work-item-overlay"></div>
+        <div class="work-item-info">
+          <div class="work-item-title">Chic Summer Wedding</div>
+          <div class="work-item-loc">Sonoma, California</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="img-placeholder"><span>Image</span></div>
+        <div class="work-item-overlay"></div>
+        <div class="work-item-info">
+          <div class="work-item-title">Elevated Southern Wedding</div>
+          <div class="work-item-loc">Louisiana</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="img-placeholder"><span>Image</span></div>
+        <div class="work-item-overlay"></div>
+        <div class="work-item-info">
+          <div class="work-item-title">Sea Ranch Lodge</div>
+          <div class="work-item-loc">California Coast</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="img-placeholder"><span>Image</span></div>
+        <div class="work-item-overlay"></div>
+        <div class="work-item-info">
+          <div class="work-item-title">Whimsical Spring Wedding</div>
+          <div class="work-item-loc">Hawaii</div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="img-placeholder"><span>Image</span></div>
+        <div class="work-item-overlay"></div>
+        <div class="work-item-info">
+          <div class="work-item-title">Editorial: Unbound</div>
+          <div class="work-item-loc">LOHO</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="about-strip">
+    <div class="about-image">
+      <!-- REPLACE: swap with your portrait -->
+      <div class="img-placeholder"><span>Sam Portrait</span></div>
+    </div>
+    <div class="about-content">
+      <span class="section-label">About</span>
+      <h2 class="about-title">
+        PRECISE EYE.<br>
+        <em>Deep Industry</em><br>
+        RELATIONSHIPS.
+      </h2>
+      <p class="about-body">Sam Ruiz is a bridal fashion stylist specializing in multi-day wedding celebrations and editorial styling for bridal brands. West Coast based. Available worldwide.</p>
+      <a href="about.html" class="text-link">Read More</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">It's Giving Bridal</span>
+    <ul class="footer-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="inquire.html">Inquire</a></li>
+    </ul>
+    <span class="footer-copy">© It's Giving Bridal 2026</span>
+  </footer>
+
+  <script>
+    // Nav scroll behavior
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+
+</body>
+</html>
