@@ -72,9 +72,10 @@
       position: relative;
       overflow: hidden;
       cursor: pointer;
+      height: 300px;
     }
 
-    .work-entry.tall { grid-row: span 2; }
+    .work-entry.tall { grid-row: span 2; height: 602px; }
     .work-entry.wide { grid-column: span 2; }
 
     .work-entry img {
@@ -85,9 +86,6 @@
       display: block;
       filter: brightness(0.88) grayscale(5%);
       transition: transform 0.7s ease, filter 0.5s ease;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
 
     .work-entry.natural img {
