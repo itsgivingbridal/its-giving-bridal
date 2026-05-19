@@ -196,6 +196,8 @@
       max-height: 90vh;
     }
 
+    #lb-img-wrap { line-height: 0; }
+
     #lb-img {
       max-height: 78vh;
       width: auto !important;
@@ -965,7 +967,7 @@
     <button class="lb-prev" onclick="lbPrev()">&#x2190;</button>
     <button class="lb-next" onclick="lbNext()">&#x2192;</button>
     <div class="lb-inner">
-      <img id="lb-img" src="" alt="">
+      <div id="lb-img-wrap"></div>
       <div class="lb-info">
         <div id="lb-title"></div>
         <div id="lb-meta"></div>
@@ -998,7 +1000,7 @@
 
     // Lightbox
     const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
+    const lbImgWrap = document.getElementById('lb-img-wrap');
     const lbTitle = document.getElementById('lb-title');
     const lbMeta = document.getElementById('lb-meta');
     const lbCredits = document.getElementById('lb-credits');
@@ -1022,8 +1024,12 @@
       const entry = entries[index];
       const img = entry.querySelector('img');
       const overlay = entry.querySelector('.work-overlay');
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
+      lbImgWrap.innerHTML = '';
+      const newImg = document.createElement('img');
+      newImg.src = img.src;
+      newImg.alt = img.alt;
+      newImg.id = 'lb-img';
+      lbImgWrap.appendChild(newImg);
       lbTitle.textContent = overlay.querySelector('.work-overlay-title').textContent;
       lbMeta.textContent = overlay.querySelector('.work-overlay-meta').textContent;
       lbCredits.textContent = overlay.querySelector('.work-overlay-credits').textContent;
