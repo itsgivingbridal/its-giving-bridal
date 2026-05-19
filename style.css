@@ -60,6 +60,17 @@ nav.scrolled {
   backdrop-filter: blur(8px);
 }
 
+.nav-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  filter: invert(1);
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+.nav-logo-img:hover { opacity: 1; }
+
 .nav-logo {
   font-family: var(--serif);
   font-size: 12px;
@@ -71,7 +82,7 @@ nav.scrolled {
 
 .nav-logo em {
   font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .nav-links {
