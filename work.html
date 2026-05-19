@@ -190,6 +190,7 @@
       max-height: 78vh;
       width: auto;
       max-width: 100%;
+      height: auto !important;
       object-fit: contain;
       display: block;
     }
@@ -848,8 +849,10 @@
       showSlide(currentIndex);
     }
 
-    document.querySelectorAll('.work-entry').forEach(el => {
-      el.addEventListener('click', () => openLightbox(el));
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.work-entry').forEach(el => {
+        el.addEventListener('click', () => openLightbox(el));
+      });
     });
 
     document.addEventListener('keydown', e => {
