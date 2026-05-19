@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Work — It's Giving Bridal</title>
-  <meta name="description" content="Bridal fashion styling for destination and multi-day wedding celebrations. View the portfolio of It's Giving Bridal.">
+  <meta name="description" content="Portfolio of bridal fashion styling by Sam Ruiz — destination weddings, multi-day celebrations, and editorial campaigns worldwide.">
   <link rel="stylesheet" href="style.css">
   <style>
 
-    /* PAGE HEADER */
     .page-header {
       padding: 180px 56px 80px;
       border-bottom: 1px solid rgba(240,238,233,0.06);
@@ -35,7 +34,6 @@
       color: var(--champagne);
     }
 
-    /* FILTER */
     .filter {
       display: flex;
       gap: 28px;
@@ -52,15 +50,15 @@
       cursor: pointer;
       transition: opacity 0.3s;
       padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
     }
 
     .filter-item:hover,
     .filter-item.active {
       opacity: 1;
-      border-bottom: 1px solid var(--champagne);
+      border-bottom-color: var(--champagne);
     }
 
-    /* WORK GRID */
     .work-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -84,19 +82,19 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.8) grayscale(10%);
+      filter: brightness(0.82) grayscale(8%);
       transition: transform 0.8s ease, filter 0.5s ease;
     }
 
     .work-item:hover img {
       transform: scale(1.04);
-      filter: brightness(0.9) grayscale(0%);
+      filter: brightness(0.92) grayscale(0%);
     }
 
     .work-item-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(14,14,14,0.9) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(14,14,14,0.92) 0%, transparent 55%);
       opacity: 0;
       transition: opacity 0.4s;
     }
@@ -107,6 +105,7 @@
       position: absolute;
       bottom: 24px;
       left: 24px;
+      right: 24px;
       transform: translateY(10px);
       opacity: 0;
       transition: opacity 0.4s, transform 0.4s;
@@ -119,23 +118,32 @@
 
     .work-item-title {
       font-family: var(--serif);
-      font-size: 16px;
+      font-size: 15px;
       font-style: italic;
       font-weight: 700;
       color: var(--cloud);
       letter-spacing: 0.04em;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .work-item-meta {
       font-family: var(--sans);
-      font-size: 9px;
+      font-size: 8px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--champagne);
+      margin-bottom: 8px;
     }
 
-    /* RESPONSIVE */
+    .work-item-credits {
+      font-family: var(--sans);
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      color: var(--champagne);
+      opacity: 0.6;
+      line-height: 1.7;
+    }
+
     @media (max-width: 900px) {
       .page-header {
         flex-direction: column;
@@ -155,7 +163,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="nav">
     <a href="index.html" class="nav-logo"><img src="igb_logo.png" alt="It's Giving Bridal" class="nav-logo-img"></a>
     <ul class="nav-links">
@@ -169,7 +176,6 @@
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
   <header class="page-header">
     <div class="page-header-left">
       <span class="section-label">Portfolio</span>
@@ -182,76 +188,160 @@
     </ul>
   </header>
 
-  <!-- WORK GRID -->
   <section class="work-grid" id="work-grid">
 
-    <div class="work-item wide" data-category="wedding">
-      <!-- REPLACE: swap with your best image -->
-      <div class="img-placeholder" style="height:100%;min-height:380px;"><span>Feature — Sonoma Wedding</span></div>
+    <div class="work-item wide" data-category="editorial">
+      <img src="images/editorial-bridal-styling-son-bunyola-mallorca.jpg" alt="Editorial bridal styling — Son Bunyola, Mallorca — It's Giving Bridal">
       <div class="work-item-overlay"></div>
       <div class="work-item-info">
-        <div class="work-item-title">Chic Summer Wedding</div>
-        <div class="work-item-meta">Sonoma, California &nbsp;·&nbsp; Wedding</div>
+        <div class="work-item-title">Son Bunyola, Mallorca</div>
+        <div class="work-item-meta">Editorial &nbsp;·&nbsp; Mallorca, Spain</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Lynn Shapiro &nbsp;·&nbsp; Bridal: Cortana, Vivienne Westwood, Lihi Hod &nbsp;·&nbsp; Accessories: Hermès, Chanel, Céline &nbsp;·&nbsp; Planner: Jesse Tombs &amp; Alice Medland &nbsp;·&nbsp; Venue: Son Bunyola Hotel &amp; Villas</div>
       </div>
     </div>
 
     <div class="work-item" data-category="wedding">
-      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>Louisiana Wedding</span></div>
+      <img src="images/bridal-fashion-styling-miami-wedding-welcome-party.jpg" alt="Bridal fashion styling — Miami wedding welcome party — It's Giving Bridal">
       <div class="work-item-overlay"></div>
       <div class="work-item-info">
-        <div class="work-item-title">Elevated Southern Wedding</div>
-        <div class="work-item-meta">Louisiana &nbsp;·&nbsp; Wedding</div>
+        <div class="work-item-title">H + O Wedding</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; Miami, Florida</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Arevalo Photography &nbsp;·&nbsp; Videography: Mels Films &nbsp;·&nbsp; Planner: Events by Elle &nbsp;·&nbsp; Venue: Mayfair House Miami</div>
       </div>
     </div>
 
     <div class="work-item" data-category="editorial">
-      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>LOHO Editorial</span></div>
+      <img src="images/editorial-campaign-styling-unbound-by-convention-loho-bride.png" alt="Editorial bridal styling — Unbound by Convention for LOHO Bride — It's Giving Bridal">
       <div class="work-item-overlay"></div>
       <div class="work-item-info">
         <div class="work-item-title">Unbound by Convention</div>
-        <div class="work-item-meta">Editorial &nbsp;·&nbsp; LOHO</div>
-      </div>
-    </div>
-
-    <div class="work-item" data-category="wedding">
-      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>Sea Ranch Lodge</span></div>
-      <div class="work-item-overlay"></div>
-      <div class="work-item-info">
-        <div class="work-item-title">Sea Ranch Lodge Wedding</div>
-        <div class="work-item-meta">California Coast &nbsp;·&nbsp; Wedding</div>
+        <div class="work-item-meta">Editorial &nbsp;·&nbsp; LOHO Bride</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography &amp; Art Direction: Alex Mari &nbsp;·&nbsp; Wardrobe: LOHO Bride &nbsp;·&nbsp; Accessories: Bride Merch &nbsp;·&nbsp; Videography: Gibran Lozano</div>
       </div>
     </div>
 
     <div class="work-item wide" data-category="wedding">
-      <div class="img-placeholder" style="height:100%;min-height:380px;"><span>Hawaii Wedding</span></div>
+      <img src="images/bridal-fashion-styling-san-ysidro-ranch-santa-barbara.jpg" alt="Bridal fashion styling — San Ysidro Ranch, Santa Barbara — It's Giving Bridal">
       <div class="work-item-overlay"></div>
       <div class="work-item-info">
-        <div class="work-item-title">Joyful Simplicity</div>
-        <div class="work-item-meta">Hawaii &nbsp;·&nbsp; Wedding</div>
+        <div class="work-item-title">San Ysidro Ranch</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; Santa Barbara, California</div>
+        <div class="work-item-credits">Fashion Styling — Accessories, Second Look, Welcome Party &amp; Groom: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: KT Merry &nbsp;·&nbsp; Videography: Ashley and Jay Films &nbsp;·&nbsp; Planner &amp; Design: Tyler Speier &nbsp;·&nbsp; Venue: San Ysidro Ranch</div>
       </div>
     </div>
 
     <div class="work-item" data-category="wedding">
-      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>Spring Wedding</span></div>
+      <img src="images/bridal-fashion-styling-maximalist-wedding-wrensmoor.jpg" alt="Bridal fashion styling — maximalist wedding, Wrensmoor — It's Giving Bridal">
       <div class="work-item-overlay"></div>
       <div class="work-item-info">
-        <div class="work-item-title">Whimsical Spring Wedding</div>
-        <div class="work-item-meta">K + S &nbsp;·&nbsp; Wedding</div>
+        <div class="work-item-title">Wrensmoor</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; Wrensmoor</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Nessie Todd &nbsp;·&nbsp; Dress: Lihi Hod from NWLA Bridal &nbsp;·&nbsp; Videography: Wanderland Media &nbsp;·&nbsp; Planner: Kindred Wed Events &nbsp;·&nbsp; Venue: Wrensmoor</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="editorial">
+      <img src="images/editorial-bridal-styling-immersed-education-anni-graham.jpg" alt="Editorial bridal styling — Immersed Education for Anni Graham — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Immersed Education</div>
+        <div class="work-item-meta">Editorial &nbsp;·&nbsp; Anni Graham</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Anni Graham &nbsp;·&nbsp; Gowns: Lihi Hod, NWLA Bridal, ASAR London &nbsp;·&nbsp; Planner: Mae &amp; Co Creative &nbsp;·&nbsp; Venue: The Madrona</div>
       </div>
     </div>
 
     <div class="work-item" data-category="wedding">
-      <div class="img-placeholder" style="height:100%;min-height:320px;"><span>Miami Wedding</span></div>
+      <img src="images/bridal-fashion-styling-modern-wedding-skirball-los-angeles.jpg" alt="Bridal fashion styling — modern wedding, Skirball Cultural Center, Los Angeles — It's Giving Bridal">
       <div class="work-item-overlay"></div>
       <div class="work-item-info">
-        <div class="work-item-title">H + O Wedding</div>
-        <div class="work-item-meta">Miami, Florida &nbsp;·&nbsp; Wedding</div>
+        <div class="work-item-title">M + P Modern Wedding</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; Los Angeles, California</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Nessie Todd &nbsp;·&nbsp; Dress: Lihi Hod &nbsp;·&nbsp; Planner: Kabe Magnolia Events &nbsp;·&nbsp; Venue: Skirball Cultural Center</div>
+      </div>
+    </div>
+
+    <div class="work-item wide" data-category="wedding">
+      <img src="images/bridal-fashion-styling-southern-wedding-louisiana.jpg" alt="Bridal fashion styling — elevated southern wedding, Louisiana — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Elevated Southern Wedding</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; Louisiana</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Natalie Nicole &nbsp;·&nbsp; Dress: Sarah Seven &nbsp;·&nbsp; Planner: Blue Poppy Events &nbsp;·&nbsp; Venue: Prudhomme Rouquier House</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="editorial">
+      <img src="images/editorial-bridal-styling-sea-ranch-lodge-california-coast.jpg" alt="Editorial bridal styling — Sea Ranch Lodge, California Coast — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Sea Ranch Lodge</div>
+        <div class="work-item-meta">Editorial &nbsp;·&nbsp; California Coast</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Anni Graham &nbsp;·&nbsp; Dress: Lihi Hod from NWLA Bridal &nbsp;·&nbsp; Planner: Mae &amp; Co Creative &nbsp;·&nbsp; Venue: Sea Ranch Lodge</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="editorial">
+      <img src="images/editorial-bridal-styling-bride-merch-loho-bride-alex-mari.jpg" alt="Editorial bridal styling — Bride Merch at LOHO Bride, photographed by Alex Mari — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Bride Merch at LOHO Bride</div>
+        <div class="work-item-meta">Editorial &nbsp;·&nbsp; Alex Mari</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography &amp; Art Direction: Alex Mari &nbsp;·&nbsp; Wardrobe: LOHO Bride &nbsp;·&nbsp; Accessories: Bride Merch</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="wedding">
+      <img src="images/bridal-fashion-styling-spring-wedding-glenstone-gardens.jpg" alt="Bridal fashion styling — spring wedding, Glenstone Gardens — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">K + S Spring Wedding</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; Glenstone Gardens</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Anna and Mateo &nbsp;·&nbsp; Dress: Eisen Stein Bridal &nbsp;·&nbsp; Shoes: Sandy Liang, Versace &nbsp;·&nbsp; Planner: Donovan Groves Events</div>
+      </div>
+    </div>
+
+    <div class="work-item wide" data-category="wedding">
+      <img src="images/bridal-fashion-styling-hawaii-wedding-lanikuhonua.jpg" alt="Bridal fashion styling — Hawaii wedding, Lanikuhonua — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">A + M Hawaii Wedding</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; Hawaii</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Emily Turner &nbsp;·&nbsp; Dress: KYHA &nbsp;·&nbsp; Planner: Opihi Love &nbsp;·&nbsp; Venue: Lanikuhonua</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="wedding">
+      <img src="images/bridal-fashion-styling-sunstone-winery-santa-barbara.jpg" alt="Bridal fashion styling — Sunstone Winery, Santa Barbara — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">M + P Spring Floral Wedding</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; Santa Barbara, California</div>
+        <div class="work-item-credits">Accessories, Groom &amp; Additional Looks: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Jana Williams &nbsp;·&nbsp; Dress: Mira Zwillinger from NWLA Bridal &nbsp;·&nbsp; Venue: Sunstone Winery</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="editorial">
+      <img src="images/editorial-bridal-styling-sweet-spring-still-interiors.jpg" alt="Editorial bridal styling — Sweet Spring Wedding, Still Interiors — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">Sweet Spring</div>
+        <div class="work-item-meta">Editorial &nbsp;·&nbsp; Still Interiors</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Joanna Hartman &nbsp;·&nbsp; Dress: Mira Zwillinger from NWLA Bridal &nbsp;·&nbsp; Planner: Wilde and Sage Co. &nbsp;·&nbsp; Venue: The Nest at Still</div>
+      </div>
+    </div>
+
+    <div class="work-item" data-category="wedding">
+      <img src="images/bridal-fashion-styling-san-miguel-de-allende-wedding.jpg" alt="Bridal fashion styling — San Miguel de Allende wedding — It's Giving Bridal">
+      <div class="work-item-overlay"></div>
+      <div class="work-item-info">
+        <div class="work-item-title">San Miguel de Allende</div>
+        <div class="work-item-meta">Wedding &nbsp;·&nbsp; San Miguel de Allende, Mexico</div>
+        <div class="work-item-credits">Stylist: Sam Ruiz, It's Giving Bridal &nbsp;·&nbsp; Photography: Ildefonso Gutierrez &nbsp;·&nbsp; Dress: Vivienne Westwood &nbsp;·&nbsp; Planner: Loe Weddings &nbsp;·&nbsp; Venue: Live Aqua San Miguel</div>
       </div>
     </div>
 
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <span class="footer-logo">It's Giving Bridal</span>
     <ul class="footer-links">
