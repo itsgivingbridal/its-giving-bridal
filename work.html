@@ -679,7 +679,11 @@
       document.querySelectorAll('.filter-item').forEach(i => i.classList.remove('active'));
       el.classList.add('active');
       document.querySelectorAll('.work-entry').forEach(item => {
-        item.style.display = (category === 'all' || item.dataset.category === category) ? 'block' : 'none';
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.removeProperty('display');
+        } else {
+          item.style.display = 'none';
+        }
       });
     }
   </script>
