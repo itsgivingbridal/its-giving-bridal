@@ -87,7 +87,12 @@
       object-position: center top;
       display: block;
       filter: brightness(0.88) grayscale(5%);
-      transition: transform 0.7s ease, filter 0.5s ease;
+      transition: transform 0.7s ease, filter 0.5s ease, opacity 0.4s ease;
+      opacity: 0;
+    }
+
+    .work-entry img.loaded {
+      opacity: 1;
     }
 
     .work-entry.natural img {
@@ -1050,6 +1055,15 @@
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.work-entry').forEach(el => {
         el.addEventListener('click', () => openLightbox(el));
+      });
+
+      // Fade in images as they load
+      document.querySelectorAll('.work-entry img').forEach(img => {
+        if (img.complete) {
+          img.classList.add('loaded');
+        } else {
+          img.addEventListener('load', () => img.classList.add('loaded'));
+        }
       });
     });
 
