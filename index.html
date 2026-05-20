@@ -128,8 +128,6 @@
     /* PRESS */
     .press {
       padding: 32px 56px;
-      border-top: 1px solid rgba(240,238,233,0.06);
-      border-bottom: 1px solid rgba(240,238,233,0.06);
     }
 
     .press-inner {
@@ -161,7 +159,7 @@
 
     /* WORK */
     .work {
-      padding: 60px 56px 100px;
+      padding: 32px 56px 100px;
     }
 
     .work-header {
@@ -361,13 +359,49 @@
       .press-inner { gap: 28px; }
       .press-quote { padding: 60px 28px; }
     }
+    /* LIGHTBOX */
+    #lb {
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(14,14,14,0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    #lb.active { visibility: visible; opacity: 1; pointer-events: all; }
+    .lb-inner { display: flex; flex-direction: column; align-items: center; max-width: 880px; width: 90vw; max-height: 90vh; }
+    #lb-img-wrap img { max-height: 78vh; width: auto !important; max-width: 100%; height: auto !important; object-fit: contain !important; display: block; }
+    .lb-info { margin-top: 20px; text-align: center; }
+    #lb-title { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--cloud); margin-bottom: 6px; }
+    #lb-loc { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--champagne); opacity: 0.5; }
+    .lb-close { position: fixed; top: 28px; right: 36px; background: none; border: none; color: var(--champagne); font-size: 18px; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; z-index: 1001; }
+    .lb-close:hover { opacity: 1; }
+    .lb-prev, .lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--champagne); font-size: 22px; cursor: pointer; opacity: 0.4; transition: opacity 0.2s; padding: 20px; z-index: 1001; }
+    .lb-prev { left: 20px; } .lb-next { right: 20px; }
+    .lb-prev:hover, .lb-next:hover { opacity: 1; }
+    .work-item { cursor: pointer; }
+
   </style>
+  <link rel="icon" href="images/igb_logo.png" type="image/png">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DQ7SMX7155"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DQ7SMX7155');
+  </script>
 </head>
 <body>
 
   <!-- NAV -->
   <nav id="nav">
-    <a href="index.html" class="nav-logo"><img src="images/igb_logo.png" alt="It's Giving Bridal" class="nav-logo-img"></a>
+    <a href="index.html" class="nav-logo"><img src="images/igb_logo.png" alt="It's Giving Bridal" class="nav-logo-img" loading="eager" fetchpriority="high"></a>
     <ul class="nav-links">
       <li><a href="work.html">Work</a></li>
       <li><a href="about.html">About</a></li>
@@ -383,7 +417,7 @@
   <section class="hero">
     <div class="hero-image">
       <!-- REPLACE: swap src with your hero image path e.g. images/hero.jpg -->
-      <img src="images/hero-bridal-fashion-stylist-sam-ruiz.jpg" alt="Bridal fashion styling by Sam Ruiz — destination wedding">
+      <img src="images/hero-bridal-fashion-stylist-sam-ruiz.jpg" alt="Bridal fashion styling by Sam Ruiz — destination wedding" loading="eager" fetchpriority="high">
     </div>
     <div class="hero-copy">
       <p class="hero-eyebrow">Bridal Fashion Stylist</p>
@@ -420,7 +454,7 @@
     </div>
     <div class="work-grid">
       <div class="work-item">
-        <img src="images/editorial-bridal-styling-son-bunyola-mallorca.jpg" alt="Son Bunyola Mallorca editorial bridal styling">
+        <img src="images/editorial-bridal-styling-son-bunyola-mallorca.jpg" alt="Son Bunyola Mallorca editorial bridal styling" loading="eager" fetchpriority="high">
         <div class="work-item-overlay"></div>
         <div class="work-item-info">
           <div class="work-item-title">Son Bunyola, Mallorca</div>
@@ -428,7 +462,7 @@
         </div>
       </div>
       <div class="work-item">
-        <img src="images/bridal-fashion-styling-sea-ranch-lodge-couple-wildflower-field.webp" alt="Sea Ranch Lodge bridal fashion styling" style="object-position: center center;">
+        <img src="images/bridal-fashion-styling-sea-ranch-lodge-couple-wildflower-field.webp" alt="Sea Ranch Lodge bridal fashion styling" style="object-position: center center;" loading="lazy">
         <div class="work-item-overlay"></div>
         <div class="work-item-info">
           <div class="work-item-title">Sea Ranch Lodge</div>
@@ -436,7 +470,7 @@
         </div>
       </div>
       <div class="work-item">
-        <img src="images/bridal-fashion-styling-san-ysidro-ranch-ceremony-recessional.jpg" alt="San Ysidro Ranch bridal styling">
+        <img src="images/bridal-fashion-styling-san-ysidro-ranch-ceremony-recessional.jpg" alt="San Ysidro Ranch bridal styling" loading="lazy">
         <div class="work-item-overlay"></div>
         <div class="work-item-info">
           <div class="work-item-title">San Ysidro Ranch</div>
@@ -444,7 +478,7 @@
         </div>
       </div>
       <div class="work-item">
-        <img src="images/bridal-fashion-styling-maximalist-wedding-wrensmoor.jpg" alt="Wrensmoor editorial wedding styling" style="object-position: center 30%;">
+        <img src="images/bridal-fashion-styling-maximalist-wedding-wrensmoor.jpg" alt="Wrensmoor editorial wedding styling" style="object-position: center 30%;" loading="lazy">
         <div class="work-item-overlay"></div>
         <div class="work-item-info">
           <div class="work-item-title">Maximalist LGBTQ Wedding</div>
@@ -452,7 +486,7 @@
         </div>
       </div>
       <div class="work-item">
-        <img src="images/bridal-fashion-styling-louisiana-getting-ready-gloves.jpg" alt="Louisiana bridal fashion styling getting ready" style="object-position: center 20%;">
+        <img src="images/bridal-fashion-styling-louisiana-getting-ready-gloves.jpg" alt="Louisiana bridal fashion styling getting ready" style="object-position: center 20%;" loading="lazy">
         <div class="work-item-overlay"></div>
         <div class="work-item-info">
           <div class="work-item-title">Southern Wedding</div>
@@ -474,7 +508,7 @@
   <section class="about-strip">
     <div class="about-image">
       <!-- REPLACE: swap with your portrait -->
-      <img src="images/sam-ruiz-bridal-fashion-stylist.jpg" alt="Sam Ruiz, founder of It's Giving Bridal">
+      <img src="images/sam-ruiz-bridal-fashion-stylist.jpg" alt="Sam Ruiz, founder of It's Giving Bridal" loading="lazy">
     </div>
     <div class="about-content">
       <span class="section-label">About</span>
@@ -486,6 +520,20 @@
       <a href="about.html" class="text-link">Read More</a>
     </div>
   </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lb">
+    <button class="lb-close" onclick="closeLb()">&#x2715;</button>
+    <button class="lb-prev" onclick="lbPrev()">&#x2190;</button>
+    <button class="lb-next" onclick="lbNext()">&#x2192;</button>
+    <div class="lb-inner">
+      <div id="lb-img-wrap"></div>
+      <div class="lb-info">
+        <div id="lb-title"></div>
+        <div id="lb-loc"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -501,16 +549,58 @@
   </footer>
 
   <script>
-    // Nav scroll behavior
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    // Mobile menu
     function toggleMenu() {
       const links = document.querySelector('.nav-links');
       links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
     }
+
+    // Lightbox
+    const lb = document.getElementById('lb');
+    const lbImgWrap = document.getElementById('lb-img-wrap');
+    const lbTitle = document.getElementById('lb-title');
+    const lbLoc = document.getElementById('lb-loc');
+    let lbItems = [];
+    let lbIdx = 0;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lbItems = Array.from(document.querySelectorAll('.work-item'));
+      lbItems.forEach((el, i) => {
+        el.addEventListener('click', () => { lbIdx = i; showLb(); });
+      });
+    });
+
+    function showLb() {
+      const el = lbItems[lbIdx];
+      const img = el.querySelector('img');
+      const title = el.querySelector('.work-item-title').textContent;
+      const loc = el.querySelector('.work-item-loc').textContent;
+      lbImgWrap.innerHTML = '';
+      const newImg = document.createElement('img');
+      newImg.src = img.src;
+      newImg.alt = img.alt;
+      lbImgWrap.appendChild(newImg);
+      lbTitle.textContent = title;
+      lbLoc.textContent = loc;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLb() { lb.classList.remove('active'); document.body.style.overflow = ''; }
+    function lbNext() { lbIdx = (lbIdx + 1) % lbItems.length; showLb(); }
+    function lbPrev() { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; showLb(); }
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowRight') lbNext();
+      if (e.key === 'ArrowLeft') lbPrev();
+    });
+
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
   </script>
 
 </body>
