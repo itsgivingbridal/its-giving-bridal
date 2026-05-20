@@ -195,7 +195,44 @@
       .page-hero-content { padding: 40px 32px 64px; }
       .bio { grid-template-columns: 1fr; gap: 48px; padding: 72px 28px; }
       .bio-right { order: -1; }
-      .cta-strip { padding: 72px 28px; }
+    }
+
+    /* PULL QUOTE */
+    .press-quote {
+      padding: 80px 56px;
+      border-top: 1px solid rgba(240,238,233,0.06);
+      display: flex;
+      justify-content: center;
+    }
+
+    .pull-quote {
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.8vw, 24px);
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.5;
+      color: var(--cloud);
+      text-align: center;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      opacity: 0.5;
+      margin-top: 24px;
+      font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+      .press-quote { padding: 60px 28px; }
     }
   </style>
 </head>
@@ -250,30 +287,16 @@
         <!-- REPLACE: swap with your portrait -->
         <img src="images/sam-ruiz-bridal-stylist-fitting.jpg" alt="Sam Ruiz, bridal fashion stylist, West Coast">
       </div>
-      <span class="bio-detail">West Coast Based &nbsp;·&nbsp; Available Worldwide</span>
+      <span class="bio-detail" style="display:none">West Coast Based &nbsp;·&nbsp; Available Worldwide</span>
     </div>
   </section>
 
-  <!-- PRESS -->
-  <section class="press">
-    <div class="press-inner">
-      <span class="press-name">Rock N Roll Bride</span>
-      <span class="press-name">Brides</span>
-      <span class="press-name">Coveteur</span>
-      <span class="press-name">Style Me Pretty</span>
-      <span class="press-name">The Wed</span>
-      <span class="press-name">Over The Moon</span>
-      <span class="press-name serif-italic">The New York Times</span>
-    </div>
-  </section>
-
-  <!-- CTA STRIP -->
-  <section class="cta-strip">
-    <h2 class="cta-strip-title">
-      READY TO BUILD<br>
-      <em>Your Wardrobe?</em>
-    </h2>
-    <a href="inquire.html" class="text-link">Inquire</a>
+  <!-- PRESS QUOTE -->
+  <section class="press-quote">
+    <blockquote class="pull-quote">
+      &ldquo;She creates entire worlds &mdash; her looks are sculptural, modern, and deeply intentional.&rdquo;
+      <cite>— The Wed</cite>
+    </blockquote>
   </section>
 
   <!-- FOOTER -->
