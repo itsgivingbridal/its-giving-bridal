@@ -120,7 +120,6 @@
     }
 
     .form-field input,
-    .form-field select,
     .form-field textarea {
       background: transparent;
       border: none;
@@ -133,7 +132,6 @@
       outline: none;
       transition: border-color 0.3s;
       width: 100%;
-      -webkit-appearance: none;
     }
 
     .form-field input::placeholder,
@@ -142,24 +140,91 @@
       opacity: 0.45;
     }
 
-    .form-field select {
-      color: var(--champagne);
-      opacity: 0.45;
-    }
-
-    .form-field select.has-value {
-      opacity: 1;
-    }
-
     .form-field input:focus,
-    .form-field select:focus,
     .form-field textarea:focus {
       border-color: var(--champagne);
     }
 
-    .form-field select option {
-      background: var(--charcoal);
-      color: var(--cloud);
+    /* CUSTOM SELECT */
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+
+    .custom-select-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(234,227,213,0.15);
+    }
+
+    .custom-select-value {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--champagne);
+      opacity: 0.45;
+      transition: opacity 0.3s;
+    }
+
+    .custom-select.selected .custom-select-value {
+      opacity: 1;
+    }
+
+    .custom-select-arrow {
+      font-size: 10px;
+      color: var(--champagne);
+      opacity: 0.4;
+      transition: transform 0.3s, opacity 0.3s;
+      letter-spacing: 0;
+    }
+
+    .custom-select.open .custom-select-arrow {
+      transform: rotate(90deg);
+      opacity: 0.7;
+    }
+
+    .custom-select-options {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #1a1a18;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .custom-select.open .custom-select-options {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .custom-select-option {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--champagne);
+      opacity: 0.7;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: opacity 0.2s, background 0.2s;
+    }
+
+    .custom-select-option:hover {
+      opacity: 1;
+      background: rgba(234,227,213,0.05);
+    }
+
+    .custom-select-option.active {
+      opacity: 1;
     }
 
     .form-field textarea {
@@ -251,6 +316,8 @@
 
 
       <form class="form" action="https://formspree.io/f/xqejddog" method="POST">
+        <input type="hidden" name="_replyto" value="">
+        <!-- populated by JS below -->
 
         <div data-fs-success style="display:none; font-family:var(--sans); font-size:11px; letter-spacing:0.12em; color:var(--champagne); padding:20px 0;">
           Your inquiry has been received. Sam will be in touch within 48 hours.
@@ -294,12 +361,18 @@
 
         <div class="form-field">
           <label>Service</label>
-          <select name="service">
-            <option value="" disabled selected>Select a service</option>
-            <option value="bridal">Full Service Bridal Styling</option>
-            <option value="editorial">Editorial & Campaign Styling</option>
-            <option value="general">General Inquiry</option>
-          </select>
+          <div class="custom-select" data-name="service">
+            <div class="custom-select-trigger">
+              <span class="custom-select-value">Select a service</span>
+              <span class="custom-select-arrow">&#8212;</span>
+            </div>
+            <div class="custom-select-options">
+              <div class="custom-select-option" data-value="bridal">Full Service Bridal Styling</div>
+              <div class="custom-select-option" data-value="editorial">Editorial & Campaign Styling</div>
+              <div class="custom-select-option" data-value="general">General Inquiry</div>
+            </div>
+            <input type="hidden" name="service" required>
+          </div>
         </div>
 
         <div class="form-field">
@@ -309,15 +382,21 @@
 
         <div class="form-field">
           <label>How Did You Hear About Us</label>
-          <select name="referral_source">
-            <option value="" disabled selected>Select one</option>
-            <option value="planner">A planner referred me</option>
-            <option value="instagram">Instagram</option>
-            <option value="editorial">Editorial or press</option>
-            <option value="past_client">Past client</option>
-            <option value="search">Search</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="custom-select" data-name="referral_source">
+            <div class="custom-select-trigger">
+              <span class="custom-select-value">Select one</span>
+              <span class="custom-select-arrow">&#8212;</span>
+            </div>
+            <div class="custom-select-options">
+              <div class="custom-select-option" data-value="planner">A planner referred me</div>
+              <div class="custom-select-option" data-value="instagram">Instagram</div>
+              <div class="custom-select-option" data-value="editorial">Editorial or press</div>
+              <div class="custom-select-option" data-value="past_client">Past client</div>
+              <div class="custom-select-option" data-value="search">Search</div>
+              <div class="custom-select-option" data-value="other">Other</div>
+            </div>
+            <input type="hidden" name="referral_source">
+          </div>
         </div>
 
         <div class="form-field">
@@ -364,11 +443,40 @@
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '.form', formId: 'xqejddog' });
 
-    // Brighten select when value chosen
-    document.querySelectorAll('.form-field select').forEach(sel => {
-      sel.addEventListener('change', () => {
-        sel.classList.toggle('has-value', sel.value !== '');
+    // Sync email to _replyto for Formspree reply-to
+    document.querySelector('input[name="email"]').addEventListener('input', function() {
+      document.querySelector('input[name="_replyto"]').value = this.value;
+    });
+
+    // Custom dropdowns
+    document.querySelectorAll('.custom-select').forEach(select => {
+      const trigger = select.querySelector('.custom-select-trigger');
+      const options = select.querySelectorAll('.custom-select-option');
+      const valueEl = select.querySelector('.custom-select-value');
+      const hidden = select.querySelector('input[type="hidden"]');
+
+      trigger.addEventListener('click', e => {
+        e.stopPropagation();
+        document.querySelectorAll('.custom-select.open').forEach(s => {
+          if (s !== select) s.classList.remove('open');
+        });
+        select.classList.toggle('open');
       });
+
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          valueEl.textContent = option.textContent;
+          hidden.value = option.dataset.value;
+          select.classList.add('selected');
+          select.classList.remove('open');
+          options.forEach(o => o.classList.remove('active'));
+          option.classList.add('active');
+        });
+      });
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.custom-select.open').forEach(s => s.classList.remove('open'));
     });
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
