@@ -126,7 +126,6 @@ nav.scrolled {
 
 footer {
   padding: 52px 56px;
-  border-top: 1px solid rgba(240,238,233,0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;

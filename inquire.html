@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work With Sam Ruiz — Bridal Fashion Stylist | It's Giving Bridal</title>
@@ -121,7 +124,6 @@
     .form-field textarea {
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(208,200,180,0.2);
       color: var(--cloud);
       font-family: var(--sans);
       font-size: 12px;
@@ -241,7 +243,15 @@
 
       <blockquote class="inquire-quote">&ldquo;She works with brides who want their wedding wardrobe to feel considered from start to finish &mdash; creating a cohesive visual world around each celebration.&rdquo;<cite>— Wedvibes</cite></blockquote>
 
-      <form class="form" action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+      <form class="form" action="https://formspree.io/f/xqejddog" method="POST">
+
+        <div data-fs-success style="display:none; font-family:var(--sans); font-size:11px; letter-spacing:0.12em; color:var(--champagne); padding:20px 0;">
+          Your inquiry has been received. Sam will be in touch within 48 hours.
+        </div>
+
+        <div data-fs-error style="display:none; font-family:var(--sans); font-size:11px; letter-spacing:0.1em; color:#c0392b; padding:12px 0;">
+          Something went wrong. Please try again or email Sam directly.
+        </div>
 
         <div class="form-row">
           <div class="form-field">
@@ -304,12 +314,17 @@
         </div>
 
         <div class="form-field">
+          <label>Planner Name <span style="opacity:0.5;font-weight:300;">(if referred)</span></label>
+          <input type="text" name="planner_name" placeholder="e.g. Mindy Weiss">
+        </div>
+
+        <div class="form-field">
           <label>Tell Sam About Your Vision</label>
           <textarea name="message" placeholder="Share as much or as little as you'd like."></textarea>
         </div>
 
         <div class="form-submit">
-          <button type="submit" class="btn-submit">Submit Inquiry</button>
+          <button type="submit" class="btn-submit" data-fs-submit-btn>Submit Inquiry</button>
           <span class="form-note">Response within 48 hours.</span>
         </div>
 
@@ -339,7 +354,10 @@
       const links = document.querySelector('.nav-links');
       links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
     }
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '.form', formId: 'xqejddog' });
   </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>

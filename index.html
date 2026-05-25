@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Bridal Fashion Stylist | It's Giving Bridal</title>
@@ -127,7 +130,7 @@
 
     /* PRESS */
     .press {
-      padding: 32px 56px;
+      padding: 50px 56px;
     }
 
     .press-inner {
@@ -159,7 +162,7 @@
 
     /* WORK */
     .work {
-      padding: 32px 56px 100px;
+      padding: 0 56px 40px;
     }
 
     .work-header {
@@ -179,7 +182,7 @@
     .work-item {
       position: relative;
       overflow: hidden;
-      cursor: pointer;
+      cursor: default;
     }
 
     .work-item:first-child {
@@ -245,7 +248,7 @@
     .about-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 72vh;
+      min-height: 52vh;
     }
 
     .about-image {
@@ -308,7 +311,6 @@
     /* PULL QUOTE */
     .press-quote {
       padding: 80px 56px;
-      border-top: 1px solid rgba(240,238,233,0.06);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -354,37 +356,11 @@
       .about-strip { grid-template-columns: 1fr; }
       .about-image { min-height: 50vh; }
       .about-content { padding: 60px 36px; }
-      .work { padding: 72px 28px; }
-      .press { padding: 40px 28px; }
+      .work { padding: 0 56px 40px; }
+      .press { padding: 50px 56px; }
       .press-inner { gap: 28px; }
       .press-quote { padding: 60px 28px; }
     }
-    /* LIGHTBOX */
-    #lb {
-      visibility: hidden;
-      opacity: 0;
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: rgba(14,14,14,0.97);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-    #lb.active { visibility: visible; opacity: 1; pointer-events: all; }
-    .lb-inner { display: flex; flex-direction: column; align-items: center; max-width: 880px; width: 90vw; max-height: 90vh; }
-    #lb-img-wrap img { max-height: 78vh; width: auto !important; max-width: 100%; height: auto !important; object-fit: contain !important; display: block; }
-    .lb-info { margin-top: 20px; text-align: center; }
-    #lb-title { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--cloud); margin-bottom: 6px; }
-    #lb-loc { font-family: var(--sans); font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--champagne); opacity: 0.65; }
-    .lb-close { position: fixed; top: 28px; right: 36px; background: none; border: none; color: var(--champagne); font-size: 18px; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; z-index: 1001; }
-    .lb-close:hover { opacity: 1; }
-    .lb-prev, .lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--champagne); font-size: 22px; cursor: pointer; opacity: 0.4; transition: opacity 0.2s; padding: 20px; z-index: 1001; }
-    .lb-prev { left: 20px; } .lb-next { right: 20px; }
-    .lb-prev:hover, .lb-next:hover { opacity: 1; }
-    .work-item { cursor: pointer; }
 
   </style>
   <link rel="icon" href="images/igb_logo.png" type="image/png">
@@ -420,7 +396,7 @@
       <img src="images/hero-bridal-fashion-stylist-sam-ruiz.jpg" alt="Bridal fashion styling by Sam Ruiz — destination wedding" loading="eager" fetchpriority="high">
     </div>
     <div class="hero-copy">
-      <p class="hero-eyebrow">Bridal Fashion Stylist</p>
+      <p class="hero-eyebrow">It's Giving Bridal</p>
       <h1 class="hero-title">
         BRIDAL<br>
         <em>FASHION</em> STYLIST
@@ -516,25 +492,10 @@
         PRECISE EYE.<br>
         <em>Deep Industry</em> RELATIONSHIPS.
       </h2>
-      <p class="about-body">Sam Ruiz is a bridal fashion stylist specializing in multi-day wedding celebrations and editorial styling for bridal brands. West Coast based. Available worldwide.</p>
+      <p class="about-body">Sam Ruiz is a bridal fashion stylist specializing in destination and multi-day wedding celebrations and editorial styling for bridal brands. West Coast based, available worldwide.</p>
       <a href="about.html" class="text-link">Read More</a>
     </div>
   </section>
-
-  <!-- LIGHTBOX -->
-  <div id="lb">
-    <button class="lb-close" onclick="closeLb()">&#x2715;</button>
-    <button class="lb-prev" onclick="lbPrev()">&#x2190;</button>
-    <button class="lb-next" onclick="lbNext()">&#x2192;</button>
-    <div class="lb-inner">
-      <div id="lb-img-wrap"></div>
-      <div class="lb-info">
-        <div id="lb-title"></div>
-        <div id="lb-loc"></div>
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer>
     <span class="footer-logo">It's Giving Bridal</span>
