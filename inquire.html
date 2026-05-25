@@ -60,7 +60,7 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       line-height: 1.9;
-      color: var(--cloud);
+      color: var(--champagne);
       opacity: 0.85;
       margin-bottom: 36px;
     }
@@ -124,7 +124,7 @@
     .form-field textarea {
       background: transparent;
       border: none;
-      color: var(--cloud);
+      color: var(--champagne);
       font-family: var(--sans);
       font-size: 12px;
       font-weight: 300;
@@ -139,7 +139,16 @@
     .form-field input::placeholder,
     .form-field textarea::placeholder {
       color: var(--champagne);
-      opacity: 0.3;
+      opacity: 0.45;
+    }
+
+    .form-field select {
+      color: var(--champagne);
+      opacity: 0.45;
+    }
+
+    .form-field select.has-value {
+      opacity: 1;
     }
 
     .form-field input:focus,
@@ -354,6 +363,13 @@
     }
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '.form', formId: 'xqejddog' });
+
+    // Brighten select when value chosen
+    document.querySelectorAll('.form-field select').forEach(sel => {
+      sel.addEventListener('change', () => {
+        sel.classList.toggle('has-value', sel.value !== '');
+      });
+    });
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
