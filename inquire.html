@@ -123,6 +123,22 @@
       opacity: 0.6;
     }
 
+    .form-guidance {
+      font-family: var(--sans);
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: 0.08em;
+      color: var(--champagne);
+      opacity: 0.55;
+      margin-bottom: 4px;
+    }
+
+    .field-optional {
+      font-size: 7px;
+      letter-spacing: 0.16em;
+      opacity: 0.7;
+    }
+
     .form-field input,
     .form-field textarea {
       background: transparent;
@@ -162,6 +178,23 @@
       padding: 10px 0;
       cursor: pointer;
       border-bottom: 1px solid rgba(234,227,213,0.15);
+    }
+
+    .custom-select.invalid .custom-select-trigger {
+      border-bottom-color: #c0392b;
+    }
+
+    .field-error {
+      display: none;
+      font-family: var(--sans);
+      font-size: 9px;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+      color: #c0392b;
+    }
+
+    .custom-select.invalid + .field-error {
+      display: block;
     }
 
     .custom-select-value {
@@ -366,85 +399,59 @@
           Something went wrong. Please try again or email Sam directly at <a href="mailto:hello@itsgivingbridal.com" style="color:inherit; text-decoration:underline;">hello@itsgivingbridal.com</a>.
         </div>
 
+        <p class="form-guidance">Fields marked * are required. Share whatever else you know at this stage.</p>
+
         <div class="form-row">
           <div class="form-field">
-            <label>First Name</label>
+            <label>First Name *</label>
             <input type="text" name="first_name" placeholder="Jane" required>
           </div>
           <div class="form-field">
-            <label>Last Name</label>
+            <label>Last Name *</label>
             <input type="text" name="last_name" placeholder="Smith" required>
           </div>
         </div>
 
         <div class="form-field">
-          <label>Email Address</label>
+          <label>Email Address *</label>
           <input type="email" name="email" placeholder="jane@email.com" required>
-        </div>
-
-        <div class="form-field">
-          <label>Phone Number</label>
-          <input type="tel" name="phone" placeholder="+1 000 000 0000">
         </div>
 
         <div class="form-row">
           <div class="form-field">
-            <label>Wedding Date</label>
+            <label>Wedding Date <span class="field-optional">(Optional)</span></label>
             <input type="text" name="wedding_date" placeholder="Month, Year">
           </div>
           <div class="form-field">
-            <label>Wedding Location</label>
+            <label>Wedding Location <span class="field-optional">(Optional)</span></label>
             <input type="text" name="wedding_location" placeholder="City, Country">
           </div>
         </div>
 
         <div class="form-field">
-          <label>Service</label>
+          <label>Service *</label>
           <div class="custom-select" data-name="service">
-            <div class="custom-select-trigger">
+            <div class="custom-select-trigger" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
               <span class="custom-select-value">Select a service</span>
               <span class="custom-select-arrow">&#8212;</span>
             </div>
-            <div class="custom-select-options">
+            <div class="custom-select-options" role="listbox">
               <div class="custom-select-option" data-value="bridal">Full Service Bridal Styling</div>
               <div class="custom-select-option" data-value="editorial">Editorial & Campaign Styling</div>
               <div class="custom-select-option" data-value="general">General Inquiry</div>
             </div>
-            <input type="hidden" name="service" required>
+            <input type="hidden" name="service">
           </div>
+          <span class="field-error" data-service-error>Please select a service.</span>
         </div>
 
         <div class="form-field">
-          <label>Estimated Fashion Budget</label>
+          <label>Estimated Fashion Budget <span class="field-optional">(Optional)</span></label>
           <input type="text" name="budget" placeholder="e.g. $10,000 — $25,000">
         </div>
 
         <div class="form-field">
-          <label>How Did You Hear About Us</label>
-          <div class="custom-select" data-name="referral_source">
-            <div class="custom-select-trigger">
-              <span class="custom-select-value">Select one</span>
-              <span class="custom-select-arrow">&#8212;</span>
-            </div>
-            <div class="custom-select-options">
-              <div class="custom-select-option" data-value="planner">A planner referred me</div>
-              <div class="custom-select-option" data-value="instagram">Instagram</div>
-              <div class="custom-select-option" data-value="editorial">Editorial or press</div>
-              <div class="custom-select-option" data-value="past_client">Past client</div>
-              <div class="custom-select-option" data-value="search">Search</div>
-              <div class="custom-select-option" data-value="other">Other</div>
-            </div>
-            <input type="hidden" name="referral_source">
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label>Planner Name <span style="opacity:0.5;font-weight:300;">(if referred)</span></label>
-          <input type="text" name="planner_name" placeholder="e.g. Mindy Weiss">
-        </div>
-
-        <div class="form-field">
-          <label>Tell Us About Your Vision</label>
+          <label>Tell Me About Your Wedding and Wardrobe Vision <span class="field-optional">(Optional)</span></label>
           <textarea name="message" placeholder="Share as much or as little as you'd like."></textarea>
         </div>
 
@@ -516,6 +523,19 @@
       document.querySelector('input[name="_replyto"]').value = this.value;
     });
 
+    // Reliably validate the custom Service dropdown before Formspree submits.
+    document.querySelector('.form').addEventListener('submit', function(event) {
+      const serviceSelect = document.querySelector('.custom-select[data-name="service"]');
+      const serviceInput = serviceSelect.querySelector('input[name="service"]');
+
+      if (!serviceInput.value) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        serviceSelect.classList.add('invalid');
+        serviceSelect.querySelector('.custom-select-trigger').focus();
+      }
+    }, true);
+
     // Custom dropdowns
     document.querySelectorAll('.custom-select').forEach(select => {
       const trigger = select.querySelector('.custom-select-trigger');
@@ -529,6 +549,14 @@
           if (s !== select) s.classList.remove('open');
         });
         select.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', select.classList.contains('open'));
+      });
+
+      trigger.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          trigger.click();
+        }
       });
 
       options.forEach(option => {
@@ -536,7 +564,9 @@
           valueEl.textContent = option.textContent;
           hidden.value = option.dataset.value;
           select.classList.add('selected');
+          select.classList.remove('invalid');
           select.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
           options.forEach(o => o.classList.remove('active'));
           option.classList.add('active');
         });
