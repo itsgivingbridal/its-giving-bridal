@@ -272,6 +272,24 @@
       opacity: 0.4;
     }
 
+    [data-fs-success][data-fs-active] {
+      display: block !important;
+      background: transparent !important;
+      color: var(--champagne) !important;
+      border: 1px solid rgba(240,238,233,0.25) !important;
+      border-radius: 0 !important;
+      padding: 28px !important;
+      margin: 0 !important;
+      font-family: var(--sans) !important;
+      font-size: 12px !important;
+      line-height: 1.8 !important;
+      letter-spacing: 0.12em !important;
+    }
+
+    [data-fs-error][data-fs-active] {
+      display: block !important;
+    }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .inquire-wrap { grid-template-columns: 1fr; }
@@ -340,11 +358,11 @@
         <input type="hidden" name="_replyto" value="">
         <!-- populated by JS below -->
 
-        <div data-fs-success style="display:none; font-family:var(--sans); font-size:11px; letter-spacing:0.12em; color:var(--champagne); padding:20px 0;">
+        <div data-fs-success role="status" aria-live="polite">
           Your inquiry has been received. Sam will be in touch within 48 hours.
         </div>
 
-        <div data-fs-error style="display:none; font-family:var(--sans); font-size:11px; letter-spacing:0.1em; color:#c0392b; padding:12px 0;">
+        <div data-fs-error role="alert" aria-live="assertive" style="font-family:var(--sans); font-size:11px; letter-spacing:0.1em; color:#c0392b; padding:12px 0;">
           Something went wrong. Please try again or email Sam directly at <a href="mailto:hello@itsgivingbridal.com" style="color:inherit; text-decoration:underline;">hello@itsgivingbridal.com</a>.
         </div>
 
@@ -467,6 +485,18 @@
       formElement: '.form',
       formId: 'xqejddog',
       onSuccess: () => {
+        const form = document.querySelector('.form');
+        const successMessage = form.querySelector('[data-fs-success]');
+
+        // Replace the completed form with an unmistakable confirmation.
+        Array.from(form.children).forEach(child => {
+          child.style.display = child === successMessage ? 'block' : 'none';
+        });
+        successMessage.setAttribute('data-fs-active', '');
+        successMessage.setAttribute('tabindex', '-1');
+        successMessage.focus();
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
         // Track a successful inquiry submission as a Meta Lead conversion.
         if (typeof fbq === 'function') {
           fbq('track', 'Lead');
