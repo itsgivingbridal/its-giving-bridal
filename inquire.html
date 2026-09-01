@@ -471,6 +471,13 @@
         if (typeof fbq === 'function') {
           fbq('track', 'Lead');
         }
+
+        // Track the same successful submission as a GA4 lead conversion.
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            form_name: 'Bridal Inquiry'
+          });
+        }
       }
     });
 
